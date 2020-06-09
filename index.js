@@ -12,11 +12,8 @@ inquirer.prompt([
 ]).then(function(response) { 
     let readMe = `
     # github:${userData.github}
-    ## title:${userData.pTittle}
     (https://img.shields.io/badge/license-${userData.gLicense}-blue.svg)
-    follows:${githubData.data.follows}
-    
-        `
+    `
     
     fs.writeFile("README.md", JSON.stringify(readMe, null, "\n"), function(err) {
         if (err) {
