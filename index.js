@@ -51,11 +51,20 @@ inquirer.prompt([
         name: "test",
     },
 ]).then(function(response) { 
-    let readMe = `https://img.shields.io/badge/license-${response.license}-green.svg
-    Github Username: ${response.username}
-    Project/Repo Title: ${response.title}
+    let readMe = `
+    ![License Badge](https://img.shields.io/badge/License-${response.license}-green.svg)
+    ### Github Username: ${response.username}
+    ## Project/Repo Title: ${response.title}
     Description: ${response.description}
+    Table of Contents: ${response.tableContents}
+    Installation Instructions: ${response.installation}
+    How to use: ${response.usage}
+    License: ${response.license}
+    Contributor: ${response.contributor}
+    Test Code: ${response.test}
     `;
+    // \n is not working in template literal
+    
     // Write to file README.md
     fs.writeFile("README.md", JSON.stringify(readMe, null, "\n"), function(err) {
         if (err) {
