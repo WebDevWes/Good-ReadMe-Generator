@@ -63,10 +63,9 @@ inquirer.prompt([
     Contributor: ${response.contributor}
     Test Code: ${response.test}
     `;
-    // \n is not working in template literal
     
     // Write to file README.md
-    fs.writeFile("README.md", JSON.stringify(readMe, null, "\n"), function(err) {
+    fs.writeFile("README.md", readMe, function(err) {
         if (err) {
             console.log('Oops, there was an error', err);
         }
