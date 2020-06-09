@@ -1,0 +1,27 @@
+{
+  "name": "good-readme-generator",
+  "version": "1.0.0",
+  "description": "Readme Generator for Github Repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesaboo/Good-ReadMe-Generator.git"
+  },
+  "keywords": [
+    "readme",
+    "generator"
+  ],
+  "author": "Wesley Tran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wesaboo/Good-ReadMe-Generator/issues"
+  },
+  "homepage": "https://github.com/wesaboo/Good-ReadMe-Generator#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "inquirer": "^7.1.0"
+  }
+}
