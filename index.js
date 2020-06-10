@@ -6,6 +6,7 @@ const axios = require("axios");
 // Global Variable for Inquirer results
 let answers 
 let avatar  
+let email
 
 // Inquirer to ask questions
 inquirer.prompt([
@@ -13,11 +14,6 @@ inquirer.prompt([
         type: "input",
         message: "Please enter your Github username",
         name: "username",
-    },
-    {
-        type: "input",
-        message: "Please enter your Github email address",
-        name: "email",
     },
     {
         type: "input",
@@ -64,7 +60,9 @@ inquirer.prompt([
     answers = response
     const queryURL = `https://api.github.com/users/${response.username}`;
     axios.get(queryURL).then(function (res) {
-        avatar = res.data.avatar_url
+        console.log(res);
+        avatar = res.data.avatar_url;
+        email = res.data.email;
         generateReadMe(answers);
     });
 });
@@ -75,7 +73,7 @@ let readMe = `
 
 ### Github Username: ${response.username}
 
-Github Email Address: ${response.email}
+Github Email Address: ${email}
 
 ## Project/Repo Title: ${response.title}
 
