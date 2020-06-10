@@ -52,16 +52,25 @@ inquirer.prompt([
     },
 ]).then(function(response) { 
     let readMe = `
-    ![License Badge](https://img.shields.io/badge/License-${response.license}-green.svg)
-    ### Github Username: ${response.username}
-    ## Project/Repo Title: ${response.title}
-    Description: ${response.description}
-    Table of Contents: ${response.tableContents}
-    Installation Instructions: ${response.installation}
-    How to use: ${response.usage}
-    License: ${response.license}
-    Contributor: ${response.contributor}
-    Test Code: ${response.test}
+![License Badge](https://img.shields.io/badge/License-${response.license}-green.svg)
+
+### Github Username: ${response.username}
+
+## Project/Repo Title: ${response.title}
+
+Description: ${response.description}
+
+Table of Contents: ${response.tableContents}
+
+Installation Instructions: ${response.installation}
+
+How to use: ${response.usage}
+
+License: ${response.license}
+
+Contributor: ${response.contributor}
+
+Test Code: ${response.test}
     `;
     
     // Write to file README.md
