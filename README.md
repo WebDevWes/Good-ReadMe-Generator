@@ -13,6 +13,8 @@ Installation Instructions: Runs in NodeJS, requires inquirer and fs node_modules
 
 How to use: Upon launch you will be prompted with questions of which the answers will populate the README.md
 
+![Screenshot](assets/ReadMe_Generator Screenshot.png)
+
 License: ISC
 
 Contributor: Wesley Tran
