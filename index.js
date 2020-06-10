@@ -57,6 +57,7 @@ inquirer.prompt([
         name: "test",
     },
 ]).then(function (response) {
+    // Grabs username and email from github API
     answers = response
     const queryURL = `https://api.github.com/users/${response.username}`;
     axios.get(queryURL).then(function (res) {
@@ -68,6 +69,7 @@ inquirer.prompt([
 });
 
 function generateReadMe(response) {
+// Populate README.md using template literal
 let readMe = `
 ![License Badge](https://img.shields.io/badge/License-${response.license}-green.svg)
 
@@ -95,7 +97,7 @@ Test Code: ${response.test}
 `;
 
     // Write to file README.md
-    fs.writeFile("README.md", readMe, function (err) {
+    fs.writeFile("_README.md", readMe, function (err) {
         if (err) {
             console.log('Oops, there was an error', err);
         }
