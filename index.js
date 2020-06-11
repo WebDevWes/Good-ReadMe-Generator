@@ -17,6 +17,11 @@ inquirer.prompt([
     },
     {
         type: "input",
+        message: "Please enter your Github email",
+        name: "email",
+    },
+    {
+        type: "input",
         message: "Please enter a title for your Project/Repo",
         name: "title",
     },
@@ -63,7 +68,11 @@ inquirer.prompt([
     axios.get(queryURL).then(function (res) {
         console.log(res);
         avatar = res.data.avatar_url;
-        email = res.data.email;
+        if (res.data.email === null) {
+            email = response.email;
+        } else {
+            email = res.data.email
+        };
         generateReadMe(answers);
     });
 });
@@ -97,7 +106,7 @@ Test Code: ${response.test}
 `;
 
     // Write to file README.md
-    fs.writeFile("_README.md", readMe, function (err) {
+    fs.writeFile("README.md", readMe, function (err) {
         if (err) {
             console.log('Oops, there was an error', err);
         }
