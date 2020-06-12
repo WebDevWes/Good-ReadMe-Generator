@@ -4,8 +4,8 @@ const inquirer = require("inquirer");
 const axios = require("axios");
 
 // Global Variable for Inquirer results
-let answers 
-let avatar  
+let answers
+let avatar
 let email
 
 // Inquirer to ask questions
@@ -14,11 +14,6 @@ inquirer.prompt([
         type: "input",
         message: "Please enter your Github username",
         name: "username",
-    },
-    {
-        type: "input",
-        message: "Please enter your Github email",
-        name: "email",
     },
     {
         type: "input",
@@ -65,21 +60,27 @@ inquirer.prompt([
     // Grabs username and email from github API
     answers = response
     const queryURL = `https://api.github.com/users/${response.username}`;
-    axios.get(queryURL).then(function (res) {
+    axios.get(queryURL).then(async function (res) {
         console.log(res);
         avatar = res.data.avatar_url;
+        // If statement for when Github API returns null for email
         if (res.data.email === null) {
-            email = response.email;
-        } else {
-            email = res.data.email
-        };
+            const answers = await inquirer.prompt([
+                {
+                    type: "input",
+                    message: "Github API returned 'null' for your email address, please enter an email address.",
+                    name: "email",
+                },
+            ])
+            email = answers.email
+        }
         generateReadMe(answers);
     });
 });
 
 function generateReadMe(response) {
-// Populate README.md using template literal
-let readMe = `
+    // Populate README.md using template literal
+    let readMe = `
 ![License Badge](https://img.shields.io/badge/License-${response.license}-green.svg)
 
 ### Github Username: ${response.username}
